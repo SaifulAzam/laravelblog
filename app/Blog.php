@@ -2,18 +2,27 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Model as Eloquent;
 
-class Blog extends Eloquent
+class Blog extends Model
 {
+    //
+    protected $fillable = ['title', 'excerpt', 'content', 'published_at'];
 
-    protected $fillable = array('title', 'slug', 'content', 'user_id', 'published_at');
+    // public function setPublishedAtAttribute($date)
+    // {
+    //     $this->attributes['published_at'] = Carbon::createFromFormat('Y-m-d', $date);
+    // }
 
-    public function setPublishedAtAttribute($date)
-    {
-        $this->attributes['published_at'] = Carbon::createFromFormat('Y-m-d', $date);
-    }
+
+    // http://laravel.io/forum/10-31-2014-undefined-property-clientname
+    public function getPublishedAtAttribute()
+ 	{
+ 		$carbon = new Carbon($this->attributes['published_at']);
+ 		$date = $carbon->format('F j, Y');
+ 		return $date;
+	}
 
     public function scopePublished($query)
     {
@@ -24,22 +33,9 @@ class Blog extends Eloquent
     {
         $query->where('published_at', '>', Carbon::now());
     }
+
     public function user()
     {
-        return $this->belongsTo('User');
+    	return $this->belongsTo('App\User');
     }
-
-    public function comments()
-    {
-        return $this->hasMany('Comment');
-    }
-
-    // public function getNumCommentsStr(){
-    //     $num = $this->comments()->count();
-
-    //     if($num == 1) {
-    //         return "1 comment";
-    //     }
-    //     return $num. 'comments';
-    // }
 }

@@ -1,54 +1,27 @@
 @extends('layout.main')
-@section('content')
-	<article>
-		<header>
-			<h1>{{ $blog->title }}</h1>
-		</header>
-		<div class="content">
-			{{ $blog->content }}
-		</div>
-		<footer>
-			<p>Posted {{ $blog->created_at->diffForHumans() }}</p>
-			<a href="{{ URL::route('editBlog', array('id' => $blog->id))}}">Edit Blog</a>
-			<form action="{{ URL::route('deleteBlog', array('id' => $blog->id))}}" method="post">
-				<input type="submit" value="Delete Blog">
-				{{ Form::token() }}
-			</form>
-		</footer>
-	</article>
 
-	<section id="comments">
-		@foreach($blog->comments as $comment)
-			<div>
-				<p>{{ $comment->name }} says...</p>
-				<blockquote>{{ $comment->content }}</blockquote>
-				@if(Auth::check())
-					@if(strcmp(Auth::user()->username, $comment->name)==0)
-						<form action="{{ URL::route('deleteComment', array('comment_id' => $comment->id))}}" method="post">
-							<input type="submit" value="Delete Comment">
-							{{ Form::token() }}
-						</form>
-					@endif
-				@endif
-			</div>
-		@endforeach
-	</section>
-	<section>
-		<h3 class="title">Add a comment</h3>
-		<form action="{{ URL::route('createComment', array('id' => $blog->id))}}" method="post">
-			<div class="field">
-				<h1>{{ $blog->user->username }}</h1>
-			</div>
-			<div class="filed">
-				<textarea id="comment_content" name="content" class="form-control" placeholder="Write here..."></textarea>
-			</div>
-			<input type="submit" class="btn btn-primary" />
-			{{ Form::token() }}
-			<script>
-	            // Replace the <textarea id="editor1"> with a CKEditor
-	            // instance, using default configuration.
-	            CKEDITOR.replace( 'comment_content' );
-	        </script>
-		</form>
-	</section>
+@section('title', 'Blog Page')
+
+@section('header')
+<header class="intro-header" style="background-image: url('{{ url('img/post-bg.jpg') }}');">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>{{ $blog->title }}</h1>
+                    <h2 class="subheading">{{ $blog->excerpt }}</h2>
+                    <span class="meta">Posted by <a href="#">{{ $blog->user->name }}</a> on {{ $blog->published_at }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+@stop
+
+@section('main-content')
+<div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        {{ $blog->content }}
+    </div>
+</div>
 @stop

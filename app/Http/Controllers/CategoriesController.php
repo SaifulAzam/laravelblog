@@ -6,11 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Blog;
-use Redirect;
-use App\User;
 
-class BlogsController extends Controller
+class CategoriesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,8 +17,9 @@ class BlogsController extends Controller
     public function index()
     {
         //
-        $blogs = Blog::latest('published_at')->published()->paginate(5);
-        return view('blogs.index', compact('blogs'));
+
+        // temparary code to redirect to home page
+        return redirect('/');
     }
 
     /**
@@ -32,7 +30,6 @@ class BlogsController extends Controller
     public function create()
     {
         //
-        return view('blogs.create');
     }
 
     /**
@@ -44,17 +41,6 @@ class BlogsController extends Controller
     public function store(Request $request)
     {
         //
-        // temparary code before finish auth part
-        $user = User::find(2);
-        $blog = $user->blogs()->create($request->all());
-        // temparary code before finish auth part
-        
-
-
-        // $blog = Blog::create($request->all());
-
-        
-        return redirect('blogs')->with('message', 'Your blog has been created.');
     }
 
     /**
@@ -63,10 +49,9 @@ class BlogsController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function show(Blog $blog)
+    public function show($id)
     {
         //
-        return view('blogs.show', compact('blog'));
     }
 
     /**
@@ -75,10 +60,9 @@ class BlogsController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function edit(Blog $blog)
+    public function edit($id)
     {
         //
-        return view('blogs.edit', compact('blog'));
     }
 
     /**
@@ -88,11 +72,9 @@ class BlogsController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, Blog $blog)
+    public function update(Request $request, $id)
     {
         //
-        $blog->update($request->all());
-        return redirect('blogs')->with('message', 'The blog has been updated');
     }
 
     /**
@@ -101,10 +83,8 @@ class BlogsController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function destroy(Blog $blog)
+    public function destroy($id)
     {
         //
-        Blog::destroy($blog->id);
-        return redirect('blogs')->with('message', 'The blog has been deleted!');
     }
 }

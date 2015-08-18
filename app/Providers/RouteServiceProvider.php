@@ -26,7 +26,9 @@ class RouteServiceProvider extends ServiceProvider
     {
         //
 
+        // mobile binding
         parent::boot($router);
+        $router->model('blogs', 'App\Blog');
     }
 
     /**
