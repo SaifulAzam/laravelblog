@@ -1,0 +1,16 @@
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+@media (min-width: 768px) {
+	.dropdown:hover .dropdown-menu {
+		display: block;
+	}
+	.dropdown .dropdown-menu{
+		background-color: transparent;
+	}
+
+	.dropdown .dropdown-menu li a:hover{
+		background-color: transparent;
+		color: #333;
+	}
+}
+
