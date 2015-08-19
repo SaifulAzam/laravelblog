@@ -10,6 +10,7 @@ use App\Blog;
 use Redirect;
 use App\User;
 use App\Category;
+use Auth;
 
 class BlogsController extends Controller
 {
@@ -54,7 +55,7 @@ class BlogsController extends Controller
     {
         //
         // temparary code before finish auth part
-        $user = User::find(1);
+        $user = Auth::user();
         $blog = $user->blogs()->create($request->all());
         // temparary code before finish auth part
         
