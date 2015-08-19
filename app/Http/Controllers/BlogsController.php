@@ -9,9 +9,16 @@ use App\Http\Controllers\Controller;
 use App\Blog;
 use Redirect;
 use App\User;
+use App\Category;
 
 class BlogsController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index', 'show']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -21,7 +28,8 @@ class BlogsController extends Controller
     {
         //
         $blogs = Blog::latest('published_at')->published()->paginate(5);
-        return view('blogs.index', compact('blogs'));
+        $categories = Category::all();
+        return view('blogs.index', compact('blogs', 'categories'));
     }
 
     /**
@@ -32,7 +40,8 @@ class BlogsController extends Controller
     public function create()
     {
         //
-        return view('blogs.create');
+        $categories = Category::lists('name' , 'id');
+        return view('blogs.create', compact('categories'));
     }
 
     /**
@@ -45,13 +54,14 @@ class BlogsController extends Controller
     {
         //
         // temparary code before finish auth part
-        $user = User::find(2);
+        $user = User::find(1);
         $blog = $user->blogs()->create($request->all());
         // temparary code before finish auth part
         
 
 
         // $blog = Blog::create($request->all());
+        $blog->categories()->sync($request->get('categories'));
 
         
         return redirect('blogs')->with('message', 'Your blog has been created.');
@@ -78,7 +88,8 @@ class BlogsController extends Controller
     public function edit(Blog $blog)
     {
         //
-        return view('blogs.edit', compact('blog'));
+        $categories = Category::lists('name' , 'id');
+        return view('blogs.edit', compact('blog', 'categories'));
     }
 
     /**
@@ -92,6 +103,9 @@ class BlogsController extends Controller
     {
         //
         $blog->update($request->all());
+        
+        $blog->categories()->sync($request->get('categories'));
+        
         return redirect('blogs')->with('message', 'The blog has been updated');
     }
 

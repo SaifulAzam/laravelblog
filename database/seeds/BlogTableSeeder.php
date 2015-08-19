@@ -18,7 +18,7 @@ class BlogTableSeeder extends Seeder {
  			'excerpt' => $faker->sentence(3),
  			'content' => $faker->sentence(20),
  			'published_at' => $faker->dateTime(),
- 			'user_id' => 2
+ 			'user_id' => 1
  			]);
  		}
  	}	

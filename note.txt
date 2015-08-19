@@ -1,0 +1,20 @@
+1. add composer packages:
+	laravelcollective/html
+	fabpot/goutte
+	barryvdh/laravel-debugbar
+	fzaninotto/faker
+
+2. modify config/app.php
+3. add node package
+	npm install -g gulp
+	npm install
+
+4. model binding RouteServiceProvider.php
+5. formrequest validate
+6. id to slug
+7. many to many               blogs vs categories
+8. upload pictures
+9. WYSIHTML5
+10. disque
+11. setting mai
+12. menu according to guest or auth

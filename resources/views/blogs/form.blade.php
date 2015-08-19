@@ -15,5 +15,9 @@
   {!! Form::input('date', 'published_at', null, ['required', 'class'=>'form-control']) !!}
 </div>
 <div class="form-group">
+	{!! Form::label('categories', 'Categories') !!}
+	{!! Form::select('categories[]', $categories, null, ['id' => 'categories', 'class' => 'form-control', 'multiple']) !!}
+</div>
+<div class="form-group">
   {!! Form::submit($submitButtonText, ['class'=>'btn btn-primary']) !!}
 </div>

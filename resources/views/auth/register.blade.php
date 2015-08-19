@@ -1,10 +1,6 @@
 @extends('layout.main')
 
-<<<<<<< HEAD
 @section('title', 'Create Account')
-=======
-@section('title', 'Create Blog')
->>>>>>> 4a5222c77c7de44512a39b8b159ee47ea33b2d39
 
 @section('header')
 <header class="intro-header" style="background-image: url('{{ url('img/home-bg.jpg') }}');">

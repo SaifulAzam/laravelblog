@@ -6,9 +6,16 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Category;
 
 class CategoriesController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index', 'show']]);
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -16,9 +23,7 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        //
-
-        // temparary code to redirect to home page
+        //redirect to home page
         return redirect('/');
     }
 
@@ -30,6 +35,7 @@ class CategoriesController extends Controller
     public function create()
     {
         //
+        return view('categories.create');
     }
 
     /**
@@ -41,6 +47,8 @@ class CategoriesController extends Controller
     public function store(Request $request)
     {
         //
+        Category::create($request->all());
+        return redirect('blogs')->with('message', 'The category has been updated');
     }
 
     /**
@@ -49,9 +57,12 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function show($id)
+    public function show(Category $category)
     {
         //
+        $blogs = $category->blogs()->paginate(5);
+        $categories = Category::all();
+        return view('categories.show', compact('blogs', 'category', 'categories'));
     }
 
     /**
@@ -60,9 +71,10 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function edit($id)
+    public function edit(Category $category)
     {
         //
+        return view('categories.edit', compact('category'));
     }
 
     /**
@@ -72,9 +84,11 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Category $category)
     {
         //
+        $category->update($request->all());
+        return redirect('blogs')->with('message', 'The blog has been updated');
     }
 
     /**
@@ -83,8 +97,10 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function destroy($id)
+    public function destroy(Category $category)
     {
         //
+        Category::destroy($category->id);
+        return redirect('blogs')->with('message', 'The blog has been deleted!');
     }
 }

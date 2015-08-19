@@ -38,4 +38,9 @@ class Blog extends Model
     {
     	return $this->belongsTo('App\User');
     }
+
+    public function categories()
+    {
+        return $this->belongsToMany('App\Category');
+    }
 }
