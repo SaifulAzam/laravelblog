@@ -78,7 +78,7 @@ class BlogsController extends Controller
     public function show(Blog $blog)
     {
         //
-        return view('blogs.show', compact('blog'));
+        return view('blogs.show', compact('blog', 'slug'));
     }
 
     /**

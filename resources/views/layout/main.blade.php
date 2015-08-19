@@ -69,8 +69,7 @@
                             {{ Auth::user()->name }}<span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="/auth/logout">Logout</a></li>
-                            <li><a href="/password/email">Reset Password</a></li>
+                            <li><a href="{{ url('auth/logout') }}">Logout</a></li>
                         </ul>
                     </li>
                     @else
@@ -81,6 +80,7 @@
                         <ul class="dropdown-menu">
                             <li><a href="/auth/login">Login</a></li>
                             <li><a href="/auth/register">Register</a></li>
+                            <li><a href="{{ url('password/email') }}">Reset Password</a></li>
                         </ul>
                     </li>
                     @endif
