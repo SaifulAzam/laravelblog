@@ -10,7 +10,7 @@
         "laravelcollective/html": "^5.1",
         "fabpot/goutte": "^3.1",
         "barryvdh/laravel-debugbar": "^2.0",
-        "fzaninotto/faker": "^1.5",
+        "fzaninotto/faker": "^1.5"
     },
     "require-dev": {
         "mockery/mockery": "0.9.*",

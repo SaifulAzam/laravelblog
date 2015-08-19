@@ -148,11 +148,6 @@ return [
 
         Barryvdh\Debugbar\ServiceProvider::class,
 
-        Cviebrock\EloquentSluggable\SluggableServiceProvider::class,
-
-        Ktquez\Tinymce\TinymceServiceProvider::class, 
-
-
     ],
 
     /*
