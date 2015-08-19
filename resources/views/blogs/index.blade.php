@@ -46,7 +46,7 @@
             <ul class="nav nav-stacked" id="sidebar">
                 @if(!empty($categories)) 
                     @foreach($categories as $category)
-                        <li><a href="#sec1">{{ $category->name }}</a></li>
+                        <li><a href="{{ route('categories.show', ['category' => $category->id]) }}">{{ $category->name }}</a></li>
                     @endforeach
                 @else
                     <div>No categories...</div>

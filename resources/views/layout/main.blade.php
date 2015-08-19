@@ -131,7 +131,7 @@
                             </a>
                         </li>
                     </ul>
-                    <p class="copyright text-muted">Copyright &copy; Your Website 2014</p>
+                    <p class="copyright text-muted">Copyright &copy; Fred Hong 2015</p>
                 </div>
             </div>
         </div>
