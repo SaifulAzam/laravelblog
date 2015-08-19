@@ -12,9 +12,13 @@
 */
 Route::get('/', 'BlogsController@index');
 Route::get('about', 'PagesController@about');
-Route::get('contact', 'PagesController@contact');
 Route::resource('blogs', 'BlogsController');
 Route::resource('categories', 'CategoriesController');
+
+Route::get('contact',
+['as' => 'contact', 'uses' => 'PagesController@contact']);
+Route::post('contact',
+['as' => 'contact_send', 'uses' => 'PagesController@contact_send']);
 
 
 Route::get('auth/register', 'Auth\AuthController@getRegister');
