@@ -148,6 +148,8 @@ return [
 
         Barryvdh\Debugbar\ServiceProvider::class,
 
+        Cviebrock\EloquentSluggable\SluggableServiceProvider::class,
+
 
     ],
 
