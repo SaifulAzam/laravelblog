@@ -8,9 +8,9 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="site-heading">
-                    <h1>Clean Blog</h1>
+                    <h1>Web Technology</h1>
                     <hr class="small">
-                    <span class="subheading">A Clean Blog Theme by Start Bootstrap</span>
+                    <span class="subheading">Blogs about all Web Technologies</span>
                 </div>
             </div>
         </div>
@@ -21,7 +21,7 @@
 @section('main-content')
 <div class="row">
     <div class="col-lg-10 col-md-8">
-        @if(!empty($blogs)) 
+        @if($blogs->count() != 0) 
             @foreach($blogs as $blog)
                 <div class="post-preview">
                     <a href="{{ route('blogs.show', $blog->id) }}">
@@ -44,12 +44,12 @@
     <div class="col-lg-2 col-md-4">               
         <div class="well"> 
             <ul class="nav nav-stacked" id="sidebar">
-                @if(!empty($categories)) 
+                @if($categories->count() != 0) 
                     @foreach($categories as $category)
                         <li><a href="{{ route('categories.show', ['category' => $category->id]) }}">{{ $category->name }}</a></li>
                     @endforeach
                 @else
-                    <div>No categories...</div>
+                    <div>Nothing yet...</div>
                 @endif
             </ul>
         </div>
