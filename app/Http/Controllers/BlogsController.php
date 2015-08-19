@@ -11,6 +11,7 @@ use Redirect;
 use App\User;
 use App\Category;
 use Auth;
+use App\Http\Requests\BlogFormRequest;
 
 class BlogsController extends Controller
 {
@@ -51,7 +52,7 @@ class BlogsController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(BlogFormRequest $request)
     {
         //
         // temparary code before finish auth part
@@ -100,7 +101,7 @@ class BlogsController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, Blog $blog)
+    public function update(BlogFormRequest $request, Blog $blog)
     {
         //
         $blog->update($request->all());

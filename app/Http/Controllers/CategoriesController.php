@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Category;
+use App\Http\Requests\CategoryFormRequest;
 
 class CategoriesController extends Controller
 {
@@ -44,7 +45,7 @@ class CategoriesController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(CategoryFormRequest $request)
     {
         //
         Category::create($request->all());
@@ -84,7 +85,7 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, Category $category)
+    public function update(CategoryFormRequest $request, Category $category)
     {
         //
         $category->update($request->all());
