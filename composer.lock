@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "96174c59bf60e0d40e5148e6287a39c2",
+    "hash": "b8d3c35e17873a5f78bd11d20deed6a2",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -798,6 +798,39 @@
                 "tokenizer"
             ],
             "time": "2015-03-11 20:06:43"
+        },
+        {
+            "name": "ktquez/laravel-tinymce",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ktquez/laravel-tinymce.git",
+                "reference": "65afeb22de3daf0268e02c020311ee32acdb7d89"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ktquez/laravel-tinymce/zipball/65afeb22de3daf0268e02c020311ee32acdb7d89",
+                "reference": "65afeb22de3daf0268e02c020311ee32acdb7d89",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Ktquez\\Tinymce\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alan Albuquerque: ktquez",
+                    "email": "ktquez@gmail.com"
+                }
+            ],
+            "description": "TinyMCE editor for Laravel and Lumen Framework",
+            "time": "2015-07-04 18:37:27"
         },
         {
             "name": "laravel/framework",

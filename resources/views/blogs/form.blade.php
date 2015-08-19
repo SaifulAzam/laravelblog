@@ -8,7 +8,12 @@
 </div>
 <div class="form-group">
   {!! Form::label('Content') !!}
-  {!! Form::textarea('content', null, ['required', 'class'=>'form-control']) !!}
+  {!! Form::textarea('content', null, ['required', 'class'=>'form-control', 'id'=>'blog_editor']) !!}
+  <script>
+      // Replace the <textarea id="editor1"> with a CKEditor
+      // instance, using default configuration.
+      CKEDITOR.replace( 'blog_editor' );
+  </script>
 </div>
 <div class="form-group">
   {!! Form::label('Published Date') !!}

@@ -150,6 +150,8 @@ return [
 
         Cviebrock\EloquentSluggable\SluggableServiceProvider::class,
 
+        Ktquez\Tinymce\TinymceServiceProvider::class, 
+
 
     ],
 
